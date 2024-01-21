@@ -1,0 +1,14 @@
+{
+  "name": "activity",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {},
+  "scripts": {
+    "start": "",
+    "build": "node build.js",
+    "test": ""
+  },
+  "devDependencies": {
+    "cross-spawn": "^7.0.3"
+  }
+}

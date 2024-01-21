@@ -1,0 +1,622 @@
+@font-face {
+  font-family: "iconfont";
+  src: url("../iconfonts/iconfont.eot");
+  src: url("../iconfonts/iconfont.eot?#iefix") format("embedded-opentype"),
+    url("../iconfonts/iconfont.woff") format("woff"),
+    url("../iconfonts/iconfont.ttf") format("truetype"),
+    url("../iconfonts/iconfont.svg#iconfont") format("svg");
+}
+
+.bhex-icon {
+  display: inline-block;
+  font-family: "iconfont";
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  text-rendering: auto;
+  line-height: 1;
+  font-size: 24px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  vertical-align: middle;
+}
+
+.bhex-icon span {
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  line-height: 24px;
+  padding: 0 5px;
+}
+
+.bhex-icon-levelunlimited:before {
+  content: "\e681";
+}
+
+.bhex-icon-levelwithdraw:before {
+  content: "\e67e";
+}
+
+.bhex-icon-levelcheck:before {
+  content: "\e67f";
+}
+
+.bhex-icon-levellimited:before {
+  content: "\e680";
+}
+
+.bhex-icon-triangle:before {
+  content: "\e67c";
+}
+
+.bhex-icon-googleplay:before {
+  content: "\e688";
+}
+
+.bhex-icon-coingecko:before {
+  content: "\e687";
+}
+
+.bhex-icon-feixiaohao:before {
+  content: "\e684";
+}
+
+.bhex-icon-mytoken:before {
+  content: "\e685";
+}
+
+.bhex-icon-coinmarketcap:before {
+  content: "\e686";
+}
+
+.bhex-icon-delete1:before {
+  content: "\e682";
+}
+
+.bhex-icon-save:before {
+  content: "\e683";
+}
+
+.bhex-icon-levelunlimited:before {
+  content: "\e681";
+}
+
+.bhex-icon-levelwithdraw:before {
+  content: "\e67e";
+}
+
+.bhex-icon-levelcheck:before {
+  content: "\e67f";
+}
+
+.bhex-icon-levellimited:before {
+  content: "\e680";
+}
+
+.bhex-icon-triangle:before {
+  content: "\e67c";
+}
+
+.bhex-icon-suspended1:before {
+  content: "\e67d";
+}
+
+.bhex-icon-delete:before {
+  content: "\e679";
+}
+
+.bhex-icon-checkedRadio2:before {
+  content: "\e67b";
+}
+
+.bhex-icon-edit2:before {
+  content: "\e67a";
+}
+
+.bhex-icon-flod:before {
+  content: "\e677";
+}
+
+.bhex-icon-unflod:before {
+  content: "\e678";
+}
+
+.bhex-icon-qq:before {
+  content: "\e676";
+}
+
+.bhex-icon-testfight:before {
+  content: "\e675";
+}
+
+.bhex-icon-medium:before {
+  content: "\e66f";
+}
+
+.bhex-icon-linkedin:before {
+  content: "\e670";
+}
+
+.bhex-icon-github:before {
+  content: "\e671";
+}
+
+.bhex-icon-line:before {
+  content: "\e672";
+}
+
+.bhex-icon-discord:before {
+  content: "\e673";
+}
+
+.bhex-icon-biyong:before {
+  content: "\e674";
+}
+
+.bhex-icon-count:before {
+  content: "\e66e";
+}
+
+.bhex-icon-indicator:before {
+  content: "\e66d";
+}
+
+.bhex-icon-contract:before {
+  content: "\e66c";
+}
+
+.bhex-icon-dark:before {
+  content: "\e669";
+}
+
+.bhex-icon-whiite:before {
+  content: "\e66a";
+}
+
+.bhex-icon-cnyswitch:before {
+  content: "\e66b";
+}
+
+.bhex-icon-download1:before {
+  content: "\e656";
+}
+
+.bhex-icon-kline:before {
+  content: "\e659";
+}
+
+.bhex-icon-Sort_left:before {
+  content: "\e65a";
+}
+
+.bhex-icon-moreContent:before {
+  content: "\e65d";
+}
+
+.bhex-icon-leftmore:before {
+  content: "\e65e";
+}
+
+.bhex-icon-fullScreen:before {
+  content: "\e65f";
+}
+
+.bhex-icon-Sort_right:before {
+  content: "\e661";
+}
+
+.bhex-icon-moment:before {
+  content: "\e662";
+}
+
+.bhex-icon-search1:before {
+  content: "\e664";
+}
+
+.bhex-icon-check:before {
+  content: "\e666";
+}
+
+.bhex-icon-screening:before {
+  content: "\e667";
+}
+
+.bhex-icon-share1:before {
+  content: "\e668";
+}
+
+.bhex-icon-order_down:before {
+  content: "\e663";
+}
+
+.bhex-icon-order_up:before {
+  content: "\e665";
+}
+
+.bhex-icon-slider:before {
+  content: "\e62f";
+}
+
+.bhex-icon-notice:before {
+  content: "\e660";
+}
+
+.bhex-icon-trade:before {
+  content: "\e657";
+}
+
+.bhex-icon-asset:before {
+  content: "\e658";
+}
+
+.bhex-icon-markets:before {
+  content: "\e65b";
+}
+
+.bhex-icon-home:before {
+  content: "\e65c";
+}
+
+.bhex-icon-back:before {
+  content: "\e655";
+}
+
+.bhex-icon-search:before {
+  content: "\e654";
+}
+
+.bhex-icon-paste1:before {
+  content: "\e653";
+}
+
+.bhex-icon-brief:before {
+  content: "\e652";
+}
+
+.bhex-icon-windows:before {
+  content: "\e635";
+}
+
+.bhex-icon-weibo:before {
+  content: "\e636";
+}
+
+.bhex-icon-telegram:before {
+  content: "\e637";
+}
+
+.bhex-icon-apple:before {
+  content: "\e638";
+}
+
+.bhex-icon-facebook:before {
+  content: "\e63a";
+}
+
+.bhex-icon-android:before {
+  content: "\e63b";
+}
+
+.bhex-icon-locked:before {
+  content: "\e63c";
+}
+
+.bhex-icon-favorite:before {
+  content: "\e63d";
+}
+
+.bhex-icon-favorited:before {
+  content: "\e63e";
+}
+
+.bhex-icon-candels:before {
+  content: "\e63f";
+}
+
+.bhex-icon-settings:before {
+  content: "\e640";
+}
+
+.bhex-icon-day:before {
+  content: "\e641";
+}
+
+.bhex-icon-night:before {
+  content: "\e642";
+}
+
+.bhex-icon-announcement:before {
+  content: "\e643";
+}
+
+.bhex-icon-pin:before {
+  content: "\e644";
+}
+
+.bhex-icon-fullscreen:before {
+  content: "\e645";
+}
+
+.bhex-icon-network:before {
+  content: "\e646";
+}
+
+.bhex-icon-icon-test1:before {
+  content: "\e648";
+}
+
+.bhex-icon-twitter:before {
+  content: "\e64a";
+}
+
+.bhex-icon-intro:before {
+  content: "\e639";
+}
+
+.bhex-icon-edit:before {
+  content: "\e64b";
+}
+
+.bhex-icon-info_line:before {
+  content: "\e64c";
+}
+
+.bhex-icon-appdownload:before {
+  content: "\e64d";
+}
+
+.bhex-icon-announce:before {
+  content: "\e64e";
+}
+
+.bhex-icon-download:before {
+  content: "\e64f";
+}
+
+.bhex-icon-reddit:before {
+  content: "\e650";
+}
+
+.bhex-icon-Icon_Authentication:before {
+  content: "\e651";
+}
+
+.bhex-icon-dianhua:before {
+  content: "\e609";
+}
+
+.bhex-icon-v:before {
+  content: "\e69a";
+}
+
+.bhex-icon-loading:before {
+  content: "\e615";
+}
+
+.bhex-icon-paypal:before {
+  content: "\e89e";
+}
+
+.bhex-icon-send:before {
+  content: "\e605";
+}
+
+.bhex-icon-kong:before {
+  content: "\e600";
+}
+
+.bhex-icon-addPicture:before {
+  content: "\e647";
+}
+
+.bhex-icon-usdt:before {
+  content: "\e649";
+}
+
+.bhex-icon-alarm:before {
+  content: "\e601";
+}
+
+.bhex-icon-arrowDown:before {
+  content: "\e602";
+}
+
+.bhex-icon-close:before {
+  content: "\e603";
+}
+
+.bhex-icon-attachment:before {
+  content: "\e604";
+}
+
+.bhex-icon-filter:before {
+  content: "\e606";
+}
+
+.bhex-icon-firstPage:before {
+  content: "\e607";
+}
+
+.bhex-icon-fold:before {
+  content: "\e608";
+}
+
+.bhex-icon-lastPage:before {
+  content: "\e60a";
+}
+
+.bhex-icon-hidden:before {
+  content: "\e60b";
+}
+
+.bhex-icon-moreAction:before {
+  content: "\e60c";
+}
+
+.bhex-icon-nextPage:before {
+  content: "\e60d";
+}
+
+.bhex-icon-prevPage:before {
+  content: "\e60e";
+}
+
+.bhex-icon-Suspended:before {
+  content: "\e60f";
+}
+
+.bhex-icon-unfold:before {
+  content: "\e610";
+}
+
+.bhex-icon-unhidden:before {
+  content: "\e611";
+}
+
+.bhex-icon-arrowUp:before {
+  content: "\e612";
+}
+
+.bhex-icon-add:before {
+  content: "\e613";
+}
+
+.bhex-icon-arrowRight:before {
+  content: "\e614";
+}
+
+.bhex-icon-arrowLeft:before {
+  content: "\e616";
+}
+
+.bhex-icon-checked:before {
+  content: "\e617";
+}
+
+.bhex-icon-cancelled1:before {
+  content: "\e61a";
+}
+
+.bhex-icon-finished1:before {
+  content: "\e61d";
+}
+
+.bhex-icon-foldPage:before {
+  content: "\e61e";
+}
+
+.bhex-icon-paste:before {
+  content: "\e622";
+}
+
+.bhex-icon-lightsOFF:before {
+  content: "\e625";
+}
+
+.bhex-icon-lightsON:before {
+  content: "\e626";
+}
+
+.bhex-icon-transaction:before {
+  content: "\e627";
+}
+
+.bhex-icon-unfoldPage:before {
+  content: "\e628";
+}
+
+.bhex-icon-bankCard:before {
+  content: "\e618";
+}
+
+.bhex-icon-wechatPay:before {
+  content: "\e619";
+}
+
+.bhex-icon-alipay:before {
+  content: "\e61b";
+}
+
+.bhex-icon-uncheck:before {
+  content: "\e61c";
+}
+
+.bhex-icon-user:before {
+  content: "\e61f";
+}
+
+.bhex-icon-checkedRadio:before {
+  content: "\e620";
+}
+
+.bhex-icon-ucheckedRadio:before {
+  content: "\e621";
+}
+
+.bhex-icon-time:before {
+  content: "\e623";
+}
+
+.bhex-icon-code1:before {
+  content: "\e624";
+}
+
+.bhex-icon-positive:before {
+  content: "\e629";
+}
+
+.bhex-icon-reverse:before {
+  content: "\e62a";
+}
+
+.bhex-icon-comment:before {
+  content: "\e62b";
+}
+
+.bhex-icon-info:before {
+  content: "\e62c";
+}
+
+.bhex-icon-praised:before {
+  content: "\e62d";
+}
+
+.bhex-icon-upload:before {
+  content: "\e62e";
+}
+
+.bhex-icon-logo:before {
+  content: "\e631";
+}
+
+.bhex-icon-share:before {
+  content: "\e632";
+}
+
+.bhex-icon-praise1:before {
+  content: "\e633";
+}
+
+.bhex-icon-icon-test:before {
+  content: "\e630";
+}
+
+.bhex-icon-wechat:before {
+  content: "\e634";
+}
+
+.bhex-icon-coingecko:before {
+  content: "\e687";
+}
+
+.bhex-icon-feixiaohao:before {
+  content: "\e684";
+}
+
+.bhex-icon-myToken:before {
+  content: "\e685";
+}
+
+.bhex-icon-coinmarketcap:before {
+  content: "\e686";
+}

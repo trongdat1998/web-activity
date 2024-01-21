@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="shortcut icon" id="favicon" />
+  <meta name="viewport"
+    content="minimum-scale=1, initial-scale=1, maximum-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no" />
+  <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+  <!-- <link rel="manifest" href="%PUBLIC_URL%/manifest.json" /> -->
+  <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+  <title></title>
+  <script>
+    // 皮肤设置
+    window.palette = {
+      common: {
+        black: "#242B32",
+        text: "#242B32",
+        surface: "#fff",
+        white: "#fff",
+        background: "#fff",
+      },
+      type: "light",
+      primary: {
+        main: "#3375E0",
+        light: "#4299FF",
+        dark: "#1F5DC1",
+        contrastText: "#fff",
+      },
+      secondary: {
+        main: "#D53842",
+        light: "#E2524D",
+        dark: "#F69400",
+        contrastText: "#000",
+      },
+      error: {
+        light: "#FF695E",
+        main: "#ED3756",
+        dark: "#99000D",
+        contrastText: "#fff",
+      },
+      success: {
+        light: "#6df18e",
+        main: "#05AD83",
+        dark: "#34a04f",
+        contrastText: "#fff",
+      },
+      grey: {
+        30: "#F7F9FC",
+        50: "#F4F4F5",
+        100: "#E9EAEB",
+        200: "#D3D5D6",
+        500: "#919598",
+        800: "#50555B",
+      },
+      contrastThreshold: 3,
+      tonalOffset: 0.2,
+      text: {
+        primary: "#242B32",
+      },
+      divider: "rgba(0, 0, 0, 0.12)",
+      background: {
+        paper: "#fff",
+        default: "#fff",
+        dark: "#0A1825",
+        part: "#F7F9FC",
+      },
+      action: {
+        active: "rgba(0, 0, 0, 0.54)",
+        hover: "rgba(0, 0, 0, 0.08)",
+        hoverOpacity: 0.08,
+        selected: "rgba(0, 0, 0, 0.14)",
+        disabled: "rgba(0, 0, 0, 0.26)",
+        disabledBackground: "rgba(0, 0, 0, 0.12)",
+      },
+    };
+    window.palette2 = {
+      dark: {},
+      light: {},
+    };
+  </script>
+  <script>
+    window.WEB_CONFIG = {
+      page: {},
+      supportLanguages: [],
+    };
+
+    function __set_config(data) {
+      window.WEB_CONFIG = data;
+      window.WEB_CONFIG.page = data.page || {};
+      window.WEB_CONFIG.supportLanguages = data.supportLanguages || [];
+      window.WEB_CONFIG.checkInviteCode = data.checkInviteCode;
+      if (
+        window.WEB_CONFIG.colorTheme &&
+        window.WEB_CONFIG.colorTheme.length
+      ) {
+        // 全站theme
+        var all = {};
+        var kline = {
+          dark: {},
+          light: {},
+        };
+        window.WEB_CONFIG.colorTheme.map((item) => {
+          if (item.useModule == 1 && item.type == 1) {
+            all = item.content;
+          }
+          if (item.useModule == 2 && item.type == 1) {
+            kline.light = item.content;
+          }
+          if (item.useModule == 2 && item.type == 2) {
+            kline.dark = item.content;
+          }
+        });
+        window.palette = Object.assign(window.palette, all || {});
+        window.palette2 = {
+          dark: Object.assign(window.palette2.dark, kline.dark),
+          light: Object.assign(window.palette2.light, kline.light),
+        };
+      }
+      if (data.customKV) {
+        window.WEB_CONFIG.loginReg = data.customKV.loginReg || [];
+        window.WEB_CONFIG.analytics = data.customKV.analytics || {};
+        window.WEB_CONFIG.riskIpDisabled = data.riskIpDisabled || {};
+      } else {
+        window.WEB_CONFIG.loginReg = [];
+        window.WEB_CONFIG.analytics = {};
+        window.WEB_CONFIG.riskIpDisabled = {};
+      }
+
+      (function () {
+        function setCookie(value) {
+          var str = value.name + "=" + encodeURIComponent(value.value);
+          if (value.domain) {
+            str += "; domain=" + value.domain;
+          }
+          str += "; path=" + (value.path || "/");
+          if (value.day) {
+            var time = new Date();
+            time.setTime(time.getTime() + value.day * 24 * 60 * 60 * 1000);
+            str += "; expires=" + time.toGMTString();
+          }
+          document.cookie = str;
+          return;
+        }
+
+        function getCookie(name) {
+          var value = document.cookie.match(
+            "(?:^|;)\\s*" + name + "=([^;]*)"
+          );
+          return value ? decodeURIComponent(value[1]) : null;
+        }
+
+        var _langList = [];
+        var _langText = {};
+        for (
+          var i = 0, l = window.WEB_CONFIG.supportLanguages.length;
+          i < l;
+          i++
+        ) {
+          _langList.push(
+            window.WEB_CONFIG.supportLanguages[i]["lang"].toLowerCase()
+          );
+        }
+
+        function browserLang() {
+          var ls = navigator.languages ? navigator.languages.length : 0;
+          var res = (ls
+            ? navigator.languages[0]
+            : navigator.language || navigator.userLanguage
+          ).toLowerCase();
+          // es, es-us, es-mx,es-gt等等西班牙语，统一使用 es
+          if (/^es-?/.test(res)) {
+            res = "es-es";
+          }
+          return res;
+        }
+
+        // ?source=xxxxx,写入cookie
+        function utm_source() {
+          var s = window.location.search;
+          var code = s.match(/(utm_source|source)\=([^&]{0,})/);
+          if (code && code[2]) {
+            setCookie({
+              name: "source",
+              value: code[2],
+              day: 1,
+              domain: location.hostname.replace(tmp.shift() + ".", ""),
+            });
+          }
+          var lang = s.match(/lang\=([^&]{0,})/);
+          if (lang && lang[1]) {
+            localStorage.lang = lang[1].toLowerCase();
+            setCookie({
+              name: "locale",
+              value: lang[1],
+              domain: location.hostname.replace(
+                location.hostname.split(".").shift() + ".",
+                ""
+              ),
+            });
+          }
+        }
+        utm_source();
+
+        function langPath(lang) {
+          var _lang =
+            lang ||
+            (localStorage.lang
+              ? getCookie("locale") || localStorage.lang.toLowerCase()
+              : browserLang()),
+            _langDefault = _langList[0] || "en-us";
+
+          // 不在语言列表,默认为en-us;
+          if (!_lang || _langList.indexOf(_lang) === -1) {
+            _lang = _langDefault;
+          }
+
+          // 如果是app环境
+          if (/bhexApp/i.test(navigator.userAgent)) {
+            _lang = navigator.userAgent.match(/lang\/[^\s]{1,}/i);
+            if (_lang[0]) {
+              _lang = _lang[0].split("/");
+              _lang = _lang[_lang.length - 1].toLowerCase();
+            }
+          }
+          //_lang = "en-us";
+          localStorage.lang = _lang;
+          let tmp = location.hostname.split(".");
+          setCookie({
+            name: "locale",
+            value: _lang,
+            domain: location.hostname.replace(tmp.shift() + ".", ""),
+          });
+        }
+        langPath();
+        function ismobile() {
+          return /iphone|android|ipad/i.test(navigator.userAgent);
+        }
+        function platform() {
+          localStorage.platform = "pc";
+          if (ismobile()) {
+            localStorage.platform = "mobile";
+          }
+          if (/bhexApp/i.test(navigator.userAgent)) {
+            localStorage.platform = "bhexApp";
+            let tmp = location.hostname.split(".");
+            setCookie({
+              name: "app",
+              value: "bhexApp",
+              domain: location.hostname.replace(tmp.shift() + ".", ""),
+            });
+          }
+          if (/MicroMessenger/i.test(navigator.userAgent)) {
+            localStorage.platform = "weChat";
+          }
+        }
+        platform();
+      })();
+    }
+  </script>
+  <script>
+    !(function () {
+      if (!window.localStorage) {
+        return false;
+      }
+      function setCookie(value) {
+        var str = value.name + "=" + encodeURIComponent(value.value);
+        if (value.domain) {
+          str += "; domain=" + value.domain;
+        }
+        str += "; path=" + (value.path || "/");
+        if (value.day) {
+          var time = new Date();
+          time.setTime(time.getTime() + value.day * 24 * 60 * 60 * 1000);
+          str += "; expires=" + time.toGMTString();
+        }
+        document.cookie = str;
+        return;
+      }
+
+      function getCookie(name) {
+        var value = document.cookie.match("(?:^|;)\\s*" + name + "=([^;]*)");
+        return value ? decodeURIComponent(value[1]) : null;
+      }
+
+      if (/preview/.test(window.location.search)) {
+        var domain = window.location.origin.split(".");
+        if (domain.length > 2) {
+          domain.splice(0, 1);
+        }
+        domain = [""].concat(domain);
+        if (window.location.href.indexOf("localhost") > -1) {
+          domain = ["localhost"];
+        }
+        setCookie({
+          name: "preview",
+          value: 1,
+          domain: domain.join("."),
+        });
+      }
+
+      function S4() {
+        return (((1 + Math.random()) * 0x10000) | 0)
+          .toString(16)
+          .substring(1);
+      }
+
+      function guid(deviceId) {
+        var id = getCookie("__uuid");
+        if (!id) {
+          id = [
+            "BH",
+            deviceId,
+            S4(),
+            S4(),
+            S4(),
+            getDeviceId(location.host),
+          ].join("-");
+          setCookie({
+            name: "__uuid",
+            value: id,
+            domain: location.hostname.replace(/^www\.|otc\./, "."),
+            day: 900,
+          });
+        }
+        return id;
+      }
+
+      function bin2hex(str) {
+        var result = "";
+        for (i = 0; i < str.length; i++) {
+          result += int16_to_hex(str.charCodeAt(i));
+        }
+        return result;
+      }
+
+      function int16_to_hex(i) {
+        var result = i.toString(16);
+        var j = 0;
+        while (j + result.length < 4) {
+          result = "0" + result;
+          j++;
+        }
+        return result;
+      }
+
+      function getDeviceId(domain) {
+        var canvas = document.createElement("canvas");
+        var ctx = canvas.getContext("2d");
+        domain = domain || "Only";
+        ctx.textBaseline = "top";
+        ctx.font = "14px 'Arial'";
+        ctx.textBaseline = "tencent";
+        ctx.fillStyle = "#f60";
+        ctx.fillRect(125, 1, 62, 20);
+        ctx.fillStyle = "#069";
+        ctx.fillText(domain, 2, 15);
+        ctx.fillStyle = "rgba(102, 204, 0, 0.7)";
+        ctx.fillText(domain, 4, 17);
+        var b64 = canvas.toDataURL().replace("data:image/png;base64,", "");
+        if (window.atob) {
+          return bin2hex(atob(b64).slice(-16, -12));
+        } else {
+          return "Noatob" + bin2hex(b64.slice(-16, -12));
+        }
+      }
+
+      var deviceId = getDeviceId();
+      var uuid = guid(deviceId);
+
+      var pageStartTime = new Date().getTime();
+
+      function concat(obj, obj2) {
+        var newObj = {};
+        for (var key in obj) {
+          newObj[key] = obj[key];
+        }
+        for (var _key in obj2) {
+          newObj[_key] = obj2[_key];
+        }
+        return newObj;
+      }
+
+      function trackPageError(json) {
+        try {
+          var str = JSON.stringify(
+            concat(
+              {
+                type: null,
+                cost: null,
+                http_code: null,
+                error_code: null,
+                error_message: null,
+                request_url: null,
+                timestamp: new Date().getTime(),
+                location_href: window.location.href,
+                referrer: document.referrer || null,
+                screen: [
+                  document.documentElement.clientWidth,
+                  document.documentElement.clientHeight,
+                ].join("*"),
+                user_id: getCookie("user_id") || deviceId,
+                uuid: uuid,
+                pl: "01",
+              },
+              json
+            )
+          );
+          if (localStorage.PageError) {
+            var tmp = localStorage.PageError.split("@_@");
+            tmp.push(str);
+            if (tmp.length >= 10) {
+              uploadPageError();
+            } else {
+              localStorage.PageError = tmp.join("@_@");
+            }
+          } else {
+            localStorage.PageError = str;
+          }
+        } catch (e) {
+          return false;
+        }
+      }
+
+      function uploadPageError() {
+        if (localStorage.PageError) {
+          var xhr = new XMLHttpRequest();
+          xhr.open("POST", "https://analyze.hcdncn.com/analyze");
+          xhr.send(["[", localStorage.PageError.split("@_@"), "]"].join(""));
+          localStorage.removeItem("PageError");
+        }
+      }
+
+      function autoUpload() {
+        cdnspeed();
+        uploadPageError();
+        setTimeout(autoUpload, 2e4);
+      }
+
+      function cdnspeed() {
+        var start = new Date().getTime();
+        var img = document.createElement("img");
+        img.onload = img.onerror = function (event) {
+          var e = event || {};
+          trackPageError({
+            type: "cdn_speed",
+            cost: new Date().getTime() - start,
+            error_message: e.type,
+          });
+          img.onload = img.onerror = null;
+        };
+        img.src = [
+          "https://static.hcdncn.com/static/collect.gif",
+          Math.random(),
+        ].join("?");
+      }
+
+      autoUpload();
+      window["trackPageError"] = trackPageError;
+
+      if (window.addEventListener) {
+        window.addEventListener(
+          "load",
+          function () {
+            var cost = new Date().getTime() - pageStartTime;
+            trackPageError({
+              type: "html_slow",
+              cost: cost,
+            });
+          },
+          true
+        );
+      }
+    })();
+  </script>
+  <script>
+    var init_jsbridge = false;
+    // 初始化开始 jsbridge
+    function connectWebViewJavascriptBridge(callback) {
+      init_jsbridge = true;
+
+      var ua = navigator.userAgent.toLowerCase();
+      if (/iphone|ipad|ipod/.test(ua)) {
+        if (window.WebViewJavascriptBridge) {
+          callback(WebViewJavascriptBridge);
+        }
+        if (window.WVJBCallbacks) {
+          return window.WVJBCallbacks.push(callback);
+        }
+        window.WVJBCallbacks = [callback];
+      } else if (/android/.test(ua)) {
+        if (window.WebViewJavascriptBridge) {
+          callback(WebViewJavascriptBridge);
+        } else {
+          document.addEventListener(
+            "WebViewJavascriptBridgeReady",
+            function () {
+              callback(WebViewJavascriptBridge);
+              // 处理注入之前就调用了bridge的队列
+              if (window.WVJBCallbacks && window.WVJBCallbacks.length) {
+                function cback(res, opt) {
+                  if (
+                    Object.prototype.toString.call(res) == "[object String]"
+                  ) {
+                    res = eval("(" + res + ")");
+                  }
+                  if (res.result && res.result.code == "OK") {
+                    opt.success && opt.success(res);
+                  } else {
+                    opt.error && opt.error(res);
+                  }
+                }
+                function cb(opt) {
+                  if (opt.data) {
+                    WebViewJavascriptBridge.callHandler(
+                      opt.name,
+                      opt.data,
+                      function (res) {
+                        cback(res, opt);
+                      }
+                    );
+                  } else {
+                    WebViewJavascriptBridge.callHandler(opt.name, function (
+                      res
+                    ) {
+                      cback(res, opt);
+                    });
+                  }
+                }
+                var callbacks = window.WVJBCallbacks;
+                delete window.WVJBCallbacks;
+                for (var i = 0, l = callbacks.length; i < l; i++) {
+                  cb(callbacks[i]);
+                }
+              }
+            },
+            false
+          );
+        }
+      } else {
+        //alert('仅支持iphone和android');
+      }
+      //android调用该方法获得bridge对象
+
+      //IOS调用该方法获得bridge对象
+      var WVJBIframe = document.createElement("iframe");
+      WVJBIframe.style.display = "none";
+      // 链友圈app不加载js bridge
+      if (
+        location.search.indexOf("source=lianyouquan") == -1 &&
+        document.cookie.indexOf("source=lianyouquan") == -1
+      ) {
+        WVJBIframe.src = "wvjbscheme://__BRIDGE_LOADED__";
+      }
+      document.documentElement.appendChild(WVJBIframe);
+
+      setTimeout(function () {
+        document.documentElement.removeChild(WVJBIframe);
+        return callback(null);
+      }, 10);
+    }
+
+    connectWebViewJavascriptBridge(function (bridge) {
+      /android/i.test(navigator.userAgent) &&
+        bridge &&
+        bridge.init(function (message, responseCallback) { });
+    });
+    window.addEventListener("pageshow", function (event) {
+      // if (!init_jsbridge) {
+      //   window.location.reload();
+      //   return;
+      // }
+      connectWebViewJavascriptBridge(function (bridge) {
+        /android/i.test(navigator.userAgent) &&
+          bridge &&
+          bridge.init(function (message, responseCallback) { });
+      });
+    });
+  </script>
+  <script src="/s_api/basic/config_js?custom_keys=loginReg,analytics&callback=__set_config&tab=mobile"></script>
+</head>
+
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"></div>
+  <script src="https://static.hcdncn.com/public/polyfill.min.js"></script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-122928531-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "UA-122928531-1");
+  </script>
+</body>
+
+</html>
